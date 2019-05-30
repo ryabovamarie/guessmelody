@@ -1,6 +1,7 @@
 import AbstractView from './abstract-view';
 import imageTemplate from './image-template';
 import trackPlay from './track-play';
+import {DEBUG_MODE, BORDER_TEMPLATE} from './consts';
 
 export default class GameArtistView extends AbstractView {
   constructor(question) {
@@ -17,7 +18,7 @@ export default class GameArtistView extends AbstractView {
         </div>
 
         <form class="game__artist">
-          <div class="artist">
+          <div class="artist" ${(DEBUG_MODE && this.question.answers[0].isCorrect) ? BORDER_TEMPLATE : ``}>
             <input class="artist__input visually-hidden" type="radio" name="answer" value="artist-1" id="answer-1">
             <label class="artist__name" for="answer-1">
               ${imageTemplate(this.question.answers[0].image, this.question.answers[0].title)}
@@ -25,7 +26,7 @@ export default class GameArtistView extends AbstractView {
             </label>
           </div>
 
-          <div class="artist">
+          <div class="artist" ${(DEBUG_MODE && this.question.answers[1].isCorrect) ? BORDER_TEMPLATE : ``}>
             <input class="artist__input visually-hidden" type="radio" name="answer" value="artist-2" id="answer-2">
             <label class="artist__name" for="answer-2">
               ${imageTemplate(this.question.answers[1].image, this.question.answers[1].title)}
@@ -33,7 +34,7 @@ export default class GameArtistView extends AbstractView {
             </label>
           </div>
 
-          <div class="artist">
+          <div class="artist" ${(DEBUG_MODE && this.question.answers[2].isCorrect) ? BORDER_TEMPLATE : ``}>
             <input class="artist__input visually-hidden" type="radio" name="answer" value="artist-3" id="answer-3">
             <label class="artist__name" for="answer-3">
               ${imageTemplate(this.question.answers[2].image, this.question.answers[2].title)}

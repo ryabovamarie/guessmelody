@@ -1,5 +1,6 @@
 import AbstractView from './abstract-view';
 import trackPlay from './track-play';
+import {DEBUG_MODE, BORDER_TEMPLATE} from './consts';
 
 export default class GameGenreView extends AbstractView {
   constructor(question) {
@@ -18,7 +19,9 @@ export default class GameGenreView extends AbstractView {
             </div>
             <div class="game__answer">
               <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-1">
-              <label class="game__check" for="answer-1">Отметить</label>
+              <label class="game__check" for="answer-1" ${(DEBUG_MODE && this.question.genre === this.question.answers[0].genre) ? BORDER_TEMPLATE : ``}>
+                Отметить
+              </label>
             </div>
           </div>
 
@@ -29,7 +32,9 @@ export default class GameGenreView extends AbstractView {
             </div>
             <div class="game__answer">
               <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-2">
-              <label class="game__check" for="answer-2">Отметить</label>
+              <label class="game__check" for="answer-2" ${(DEBUG_MODE && this.question.genre === this.question.answers[1].genre) ? BORDER_TEMPLATE : ``}>
+                Отметить
+              </label>
             </div>
           </div>
 
@@ -40,7 +45,9 @@ export default class GameGenreView extends AbstractView {
             </div>
             <div class="game__answer">
               <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-3">
-              <label class="game__check" for="answer-3">Отметить</label>
+              <label class="game__check" for="answer-3" ${(DEBUG_MODE && this.question.genre === this.question.answers[2].genre) ? BORDER_TEMPLATE : ``}>
+                Отметить
+              </label>
             </div>
           </div>
 
@@ -51,7 +58,9 @@ export default class GameGenreView extends AbstractView {
             </div>
             <div class="game__answer">
               <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-4">
-              <label class="game__check" for="answer-4">Отметить</label>
+              <label class="game__check" for="answer-4" ${(DEBUG_MODE && this.question.genre === this.question.answers[0].genre) ? BORDER_TEMPLATE : ``}>
+                Отметить
+              </label>
             </div>
           </div>
 
