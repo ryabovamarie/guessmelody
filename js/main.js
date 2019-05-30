@@ -235,7 +235,9 @@
             </div>
             <div class="game__answer">
               <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-1">
-              <label class="game__check" for="answer-1">Отметить</label>
+              <label class="game__check" for="answer-1" ${``}>
+                Отметить
+              </label>
             </div>
           </div>
 
@@ -246,7 +248,9 @@
             </div>
             <div class="game__answer">
               <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-2">
-              <label class="game__check" for="answer-2">Отметить</label>
+              <label class="game__check" for="answer-2" ${``}>
+                Отметить
+              </label>
             </div>
           </div>
 
@@ -257,7 +261,9 @@
             </div>
             <div class="game__answer">
               <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-3">
-              <label class="game__check" for="answer-3">Отметить</label>
+              <label class="game__check" for="answer-3" ${``}>
+                Отметить
+              </label>
             </div>
           </div>
 
@@ -268,7 +274,9 @@
             </div>
             <div class="game__answer">
               <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-4">
-              <label class="game__check" for="answer-4">Отметить</label>
+              <label class="game__check" for="answer-4" ${``}>
+                Отметить
+              </label>
             </div>
           </div>
 
@@ -352,7 +360,7 @@
         </div>
 
         <form class="game__artist">
-          <div class="artist">
+          <div class="artist" ${``}>
             <input class="artist__input visually-hidden" type="radio" name="answer" value="artist-1" id="answer-1">
             <label class="artist__name" for="answer-1">
               ${imageTemplate(this.question.answers[0].image, this.question.answers[0].title)}
@@ -360,7 +368,7 @@
             </label>
           </div>
 
-          <div class="artist">
+          <div class="artist" ${``}>
             <input class="artist__input visually-hidden" type="radio" name="answer" value="artist-2" id="answer-2">
             <label class="artist__name" for="answer-2">
               ${imageTemplate(this.question.answers[1].image, this.question.answers[1].title)}
@@ -368,7 +376,7 @@
             </label>
           </div>
 
-          <div class="artist">
+          <div class="artist" ${``}>
             <input class="artist__input visually-hidden" type="radio" name="answer" value="artist-3" id="answer-3">
             <label class="artist__name" for="answer-3">
               ${imageTemplate(this.question.answers[2].image, this.question.answers[2].title)}
