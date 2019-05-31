@@ -13,8 +13,8 @@ export default class GameArtistView extends AbstractView {
     return `<section class="game__screen">
         <h2 class="game__title">${this.question.question}</h2>
         <div class="game__track">
-          <button class="track__button track__button--play" type="button"></button>
-          <audio src="${this.question.src}"></audio>
+          <button class="track__button track__button--pause" type="button"></button>
+          <audio src="${this.question.src}" autoplay></audio>
         </div>
 
         <form class="game__artist">
@@ -60,7 +60,7 @@ export default class GameArtistView extends AbstractView {
     }
 
     const trackElement = element.querySelector(`.game__track`);
-    trackPlay(trackElement, {isOk: false});
+    trackPlay(trackElement, {isOk: true, element: trackElement});
   }
 
   onAnswer() { }

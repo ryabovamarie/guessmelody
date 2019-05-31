@@ -13,9 +13,9 @@ export default class GameGenreView extends AbstractView {
         <h2 class="game__title">${this.question.question}</h2>
         <form class="game__tracks">
           <div class="track">
-            <button class="track__button track__button--play" type="button"></button>
+            <button class="track__button track__button--pause" type="button"></button>
             <div class="track__status">
-              <audio src="${this.question.answers[0].src}"></audio>
+              <audio src="${this.question.answers[0].src}" autoplay></audio>
             </div>
             <div class="game__answer">
               <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-1">
@@ -74,7 +74,7 @@ export default class GameGenreView extends AbstractView {
     buttonSubmit.disabled = true;
 
     const trackElements = element.querySelectorAll(`.track`);
-    let playing = {isOk: false};
+    let playing = {isOk: true, element: trackElements[0]};
 
     for (let trackElement of trackElements) {
       trackPlay(trackElement, playing);
