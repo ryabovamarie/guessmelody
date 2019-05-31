@@ -204,18 +204,30 @@
     const trackButton = trackElement.querySelector(`.track__button`);
     const trackAudio = trackElement.querySelector(`audio`);
     trackButton.addEventListener(`click`, () => {
-      if (!playing.isOk && trackButton.classList.contains(`track__button--play`)) {
+      if (trackButton.classList.contains(`track__button--play`)) {
         trackButton.classList.remove(`track__button--play`);
         trackButton.classList.add(`track__button--pause`);
+        if (!playing.isOk) {
+          playing.isOk = true;
+        } else {
+          trackPause(playing.element);
+        }
+        playing.element = trackElement;
         trackAudio.play();
-        playing.isOk = true;
       } else if (trackButton.classList.contains(`track__button--pause`)) {
-        trackButton.classList.remove(`track__button--pause`);
-        trackButton.classList.add(`track__button--play`);
-        trackAudio.pause();
+        trackPause(trackElement);
         playing.isOk = false;
+        playing.element = null;
       }
     });
+  }
+
+  function trackPause(trackElement) {
+    const trackButton = trackElement.querySelector(`.track__button`);
+    const trackAudio = trackElement.querySelector(`audio`);
+    trackButton.classList.remove(`track__button--pause`);
+    trackButton.classList.add(`track__button--play`);
+    trackAudio.pause();
   }
 
   class GameGenreView extends AbstractView {
@@ -229,9 +241,9 @@
         <h2 class="game__title">${this.question.question}</h2>
         <form class="game__tracks">
           <div class="track">
-            <button class="track__button track__button--play" type="button"></button>
+            <button class="track__button track__button--pause" type="button"></button>
             <div class="track__status">
-              <audio src="${this.question.answers[0].src}"></audio>
+              <audio src="${this.question.answers[0].src}" autoplay></audio>
             </div>
             <div class="game__answer">
               <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-1">
@@ -290,7 +302,7 @@
       buttonSubmit.disabled = true;
 
       const trackElements = element.querySelectorAll(`.track`);
-      let playing = {isOk: false};
+      let playing = {isOk: true, element: trackElements[0]};
 
       for (let trackElement of trackElements) {
         trackPlay(trackElement, playing);
@@ -355,8 +367,8 @@
       return `<section class="game__screen">
         <h2 class="game__title">${this.question.question}</h2>
         <div class="game__track">
-          <button class="track__button track__button--play" type="button"></button>
-          <audio src="${this.question.src}"></audio>
+          <button class="track__button track__button--pause" type="button"></button>
+          <audio src="${this.question.src}" autoplay></audio>
         </div>
 
         <form class="game__artist">
@@ -402,7 +414,7 @@
       }
 
       const trackElement = element.querySelector(`.game__track`);
-      trackPlay(trackElement, {isOk: false});
+      trackPlay(trackElement, {isOk: true, element: trackElement});
     }
 
     onAnswer() { }
